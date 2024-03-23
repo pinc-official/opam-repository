@@ -1,0 +1,40 @@
+opam-version: "2.0"
+synopsis: "The PiNC Language as Syntax and Interpreter"
+maintainer: ["torben@ewert-online.com"]
+authors: ["Torben Ewert"]
+license: "MIT"
+homepage: "https://github.com/pinc-lang/pinc-lang"
+bug-reports: "https://github.com/pinc-lang/pinc-lang/issues"
+depends: [
+  "ocaml" {>= "4.12"}
+  "fmt"
+  "dune" {>= "3.7"}
+  "crunch"
+  "containers"
+  "bisect_ppx" {with-test}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/pinc-lang/pinc-lang.git"
+url {
+  src:
+    "https://github.com/pinc-lang/pinc-lang/releases/download/0.0.1/pinc-lang-0.0.1.tbz"
+  checksum: [
+    "sha256=37c344d8f0c2cb9e5ed60b1eeca4864f7e31b87ccf13e2d4b920e5101d4dbc1f"
+    "sha512=187934eb115bba111dfcaab42b7c26b5862ee6cdf751c23a8a93f1232db572071daa876518d62a5b248d50b6a7dc1e68b17f4f4d026d04810b4fd35d6b05c659"
+  ]
+}
+x-commit-hash: "e94299415db6e4a8234f0b7624d5ae31a60b2a00"
